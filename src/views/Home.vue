@@ -1,3 +1,31 @@
 <template>
-    <div>1</div>
+	<div> <a-button type="primary">Primary Button</a-button></div>
+	<div>{{ count }}</div>
+	<div>{{ book.year }}</div>
 </template>
+<script lang='ts'>
+import { defineComponent, reactive, ref, defineAsyncComponent } from 'vue'
+interface Book {
+	title: string
+	author: string
+	year: number
+}
+export default defineComponent({
+	components: {
+		HelloWorld: defineAsyncComponent(() => import('../components/HelloWorld.vue')),
+	},
+	setup() {
+		defineAsyncComponent
+		const count = ref<string | number>('11')
+		const book = reactive<Book>({
+			title: '',
+			author: '',
+			year: 2022,
+		})
+		return {
+			count,
+			book,
+		}
+	},
+})
+</script>
