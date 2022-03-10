@@ -41,7 +41,7 @@
 	</div>
 </template>
 <script lang='ts'>
-import { defineComponent, reactive, onBeforeMount,onMounted } from 'vue'
+import { defineComponent, reactive,onMounted } from 'vue'
 import { useRouter } from 'vue-router' //引用路由
 interface FormState {
 	username: string
