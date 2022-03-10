@@ -9,13 +9,16 @@ function pathResolve(dir: string) {
   return path.resolve(__dirname, dir);
 }
 export default defineConfig({
+  define:{
+    'process.env':{}
+  },
   plugins: [vue()],
   resolve: {
     //路径别名
     alias: {
       "@": pathResolve('./src')
     },
-    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
+    extensions: ['.mjs', '.js','.ts', '.jsx', '.tsx', '.json'],
   },
   css: {
     preprocessorOptions: {
@@ -37,7 +40,7 @@ export default defineConfig({
     open: "http://localhost:8989/#/login",
     proxy: {
       '/api': {
-        target: 'http://jsonplaceholder.typicode.com',
+        target: 'http://vue3.com/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       },

@@ -41,8 +41,10 @@
 	</div>
 </template>
 <script lang='ts'>
-import { defineComponent, reactive,onMounted } from 'vue'
+import { defineComponent, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router' //引用路由
+//@ts-ignore
+import { Send } from '@/api/login.ts'
 interface FormState {
 	username: string
 	password: string
@@ -65,7 +67,7 @@ export default defineComponent({
 				offset: 10,
 			},
 		})
-		const onFinish = (values: any) => {
+		const onFinish = () => {
 			//对表单做验证
 			router.push({
 				path: '/home',
@@ -74,8 +76,12 @@ export default defineComponent({
 		const onFinishFailed = (errorInfo: any) => {
 			console.log('Failed:', errorInfo)
 		}
-		onMounted(()=>{
-
+		onMounted(() => {
+			Send({ email: '1583649818@qq.com' }).then(res => {
+				console.log(res,'00')
+			}).catch(err => {
+				console.log(err,'000')
+			})
 		})
 		return {
 			formState,
