@@ -2,7 +2,6 @@
 import { defineConfig } from "vite";
 // npm i --save-dev @types/node
 import vue from "@vitejs/plugin-vue";
-import { resolve } from "path";
 import * as path from "path";
 
 function pathResolve(dir: string) {
@@ -40,15 +39,20 @@ export default defineConfig({
     open: "http://localhost:8989/#/login",
     proxy: {
       '/api': {
-        target: 'http://vue3.com/api',
+        target: 'http://vue3.com/api',// http://vue3.com/api/ https://weixin1.zsins.com/api/
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       },
+      // '^/api/.*': {
+      //   target: 'http://vue3.com/api/',
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/api/, '')
+      // },
     }
   },
   build: {
     outDir: 'dist',
-    assetsDir:'dist/assets',
+    assetsDir:'assets',
     minify: "esbuild",
     polyfillModulePreload:true,
     assetsInlineLimit: 4096,

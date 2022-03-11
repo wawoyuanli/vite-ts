@@ -1,7 +1,7 @@
 import axios from 'axios'
-
+const baseURL = process.env.VUE_APP_BASEAPI || '/api'
 const server=axios.create({
-    baseURL:'',
+    baseURL,
     timeout:15000
 })
 //请求拦截

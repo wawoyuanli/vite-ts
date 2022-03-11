@@ -1,2 +1,3 @@
 export {}
-const set:string='000'
+const set: string = '000'
+console.log(set)

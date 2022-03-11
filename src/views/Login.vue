@@ -44,7 +44,7 @@
 import { defineComponent, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router' //引用路由
 //@ts-ignore
-import { Send } from '@/api/login.ts'
+import { getInfo ,Send} from '@/api/login.ts'
 interface FormState {
 	username: string
 	password: string
@@ -77,6 +77,9 @@ export default defineComponent({
 			console.log('Failed:', errorInfo)
 		}
 		onMounted(() => {
+			// getInfo().then(res=>{
+			// 	console.log(res)
+			// })
 			Send({ email: '1583649818@qq.com' }).then(res => {
 				console.log(res,'00')
 			}).catch(err => {
@@ -93,7 +96,7 @@ export default defineComponent({
 </script>
 <style scoped lang="scss">
 .h_login {
-	background-color: rgb(17, 49, 99);
+	background-color: rgb(173, 184, 202);
 	min-height: 100vh;
 	color: #fff;
 	.ant-form {

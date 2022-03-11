@@ -1,5 +1,5 @@
-import {createRouter, createWebHashHistory} from 'vue-router'
-const routes=[
+import { createRouter,createWebHashHistory } from 'vue-router'
+const routes : any=[
     {
         path: '/',
         redirect:'/login'
@@ -13,8 +13,10 @@ const routes=[
         component:()=>import('@/views/Home.vue')
     }
 ]
-const routers=createRouter({
+let routers=createRouter({
     routes,
-    history:createWebHashHistory() //createWebHistory,
+    "history": createWebHashHistory()
+    // "hash": createWebHashHistory()
+    // "abstract": createMemoryHistory()
 })
 export default routers

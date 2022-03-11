@@ -1,2 +1,3 @@
 export {}
-const name:string='00'
+const name: string = '00'
+console.log(name)
