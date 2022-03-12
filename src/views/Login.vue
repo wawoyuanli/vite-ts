@@ -1,58 +1,51 @@
 <template>
 	<div class="h_login">
-		
 		<a-form
-			:model="formState"
-			:wrapper-col="{ span: formState.wrapperCol.span, offset: formState.wrapperCol.offset }"
+			:wrapper-col="{ span: wrapperCol.span, offset: wrapperCol.offset }"
 			@finish="onFinish"
+			:model="formInfo"
 			@finishFailed="onFinishFailed"
 		>
-			<a-form-item
-				:wrapper-col="{ span: formState.wrapperCol.span, offset: formState.wrapperCol.offset }"
-			>
+			<a-form-item :wrapper-col="{ span: wrapperCol.span, offset: wrapperCol.offset }">
 				<label>用户名</label>
 			</a-form-item>
 
 			<a-form-item :rules="[{ required: true, message: 'Please input your username!' }]">
-				<a-input v-model:value="formState.username" />
+				<a-input v-model="formInfo.username" />
 			</a-form-item>
-			<a-form-item
-				:wrapper-col="{ span: formState.wrapperCol.span, offset: formState.wrapperCol.offset }"
-			>
+			<a-form-item :wrapper-col="{ span: wrapperCol.span, offset: wrapperCol.offset }">
 				<label>密码</label>
 			</a-form-item>
 
 			<a-form-item :rules="[{ required: true, message: 'Please input your password!' }]">
-				<a-input v-model:value="formState.password" type="password" />
+				<a-input v-model="formInfo.password" type="password" />
 			</a-form-item>
 
-			<a-form-item
-				name="remember"
-				:wrapper-col="{ span: formState.wrapperCol.span, offset: formState.wrapperCol.offset }"
-			>
-				<a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
+			<a-form-item name="remember" :wrapper-col="{ span: wrapperCol.span, offset: wrapperCol.offset }">
+				<a-checkbox v-model="remember">Remember me</a-checkbox>
 			</a-form-item>
 
-			<a-form-item
-				:wrapper-col="{ span: formState.wrapperCol.span, offset: formState.wrapperCol.offset }"
-			>
+			<a-form-item :wrapper-col="{ span: wrapperCol.span, offset: wrapperCol.offset }">
 				<a-button type="primary" html-type="submit">Submit</a-button>
 			</a-form-item>
 		</a-form>
 	</div>
 </template>
 <script lang='ts'>
-import { defineComponent, reactive, onMounted } from 'vue'
+import { defineComponent, reactive, toRefs, onMounted } from 'vue'
 import { useRouter } from 'vue-router' //引用路由
 //@ts-ignore
-import { getInfo ,Send} from '@/api/login.ts'
+import { getInfo, Send } from '@/api/login.ts'
 interface FormState {
-	username: string
-	password: string
+
 	remember: boolean
 	wrapperCol: {
 		span: number
 		offset: number
+	}
+	formInfo: {
+		username: string
+		password: string
 	}
 }
 export default defineComponent({
@@ -60,16 +53,22 @@ export default defineComponent({
 	setup() {
 		const router = useRouter()
 		const formState = reactive<FormState>({
-			username: '',
-			password: '',
 			remember: true,
 			wrapperCol: {
 				span: 6,
 				offset: 10,
 			},
+			formInfo: {
+				username: '',
+				password: ''
+			}
 		})
-		const onFinish = () => {
+		const torefsData = toRefs(formState)
+		const onFinish = (value) => {
+			alert('000')
+			console.log(value)
 			//对表单做验证
+
 			router.push({
 				path: '/home',
 			})
@@ -78,19 +77,16 @@ export default defineComponent({
 			console.log('Failed:', errorInfo)
 		}
 		onMounted(() => {
-			// getInfo().then(res=>{
-			// 	console.log(res)
-			// })
 			Send({ email: '1583649818@qq.com' }).then(res => {
-				console.log(res,'00')
+				console.log(res, '00')
 			}).catch(err => {
-				console.log(err,'000')
+				console.log(err, '000')
 			})
 		})
 		return {
-			formState,
 			onFinish,
 			onFinishFailed,
+			...torefsData
 		}
 	},
 })

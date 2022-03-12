@@ -6,8 +6,7 @@ interface Email{
 }
 export function Send(data:Email){
     return service({
-        // url: process.env.VUE_APP_APIURL + '/v1/send',
-        url:'/v1/send',
+        url: 'http://account.web-jshtml.cn/api'+ '/v1/send',
         method: 'POST',
         data,
     })

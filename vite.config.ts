@@ -4,10 +4,11 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import * as path from "path";
 
-function pathResolve(dir: string) {
-  return path.resolve(__dirname, dir);
-}
+// function pathResolve(dir: string) {
+//   return path.resolve(__dirname, dir);
+// }
 export default defineConfig({
+  base:"./",
   define:{
     'process.env':{}
   },
@@ -16,7 +17,7 @@ export default defineConfig({
   resolve: {
     //路径别名
     alias: {
-      "@": pathResolve('./src')
+      "@": path.resolve(__dirname, './src')
     },
     extensions: ['.mjs', '.js','.ts', '.jsx', '.tsx', '.json'],
   },
@@ -42,7 +43,7 @@ export default defineConfig({
     open: "http://localhost:8989/#/login",
     proxy: {
       '/api': {
-        target: 'http://vue3.com/api',// http://vue3.com/api/ https://weixin1.zsins.com/api/
+        target: 'http://account.web-jshtml.cn/api',// http://vue3.com/api/ https://weixin1.zsins.com/api/
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       },
