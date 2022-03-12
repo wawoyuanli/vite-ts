@@ -11,14 +11,14 @@
 			</a-form-item>
 
 			<a-form-item :rules="[{ required: true, message: 'Please input your username!' }]">
-				<a-input v-model="formInfo.username" />
+				<a-input v-model:value="formInfo.username" />
 			</a-form-item>
 			<a-form-item :wrapper-col="{ span: wrapperCol.span, offset: wrapperCol.offset }">
 				<label>密码</label>
 			</a-form-item>
 
 			<a-form-item :rules="[{ required: true, message: 'Please input your password!' }]">
-				<a-input v-model="formInfo.password" type="password" />
+				<a-input v-model:value="formInfo.password" type="password" />
 			</a-form-item>
 
 			<a-form-item name="remember" :wrapper-col="{ span: wrapperCol.span, offset: wrapperCol.offset }">
@@ -35,9 +35,8 @@
 import { defineComponent, reactive, toRefs, onMounted } from 'vue'
 import { useRouter } from 'vue-router' //引用路由
 //@ts-ignore
-import { getInfo, Send } from '@/api/login.ts'
+import { Send, getInfo } from '@/api/login.ts'
 interface FormState {
-
 	remember: boolean
 	wrapperCol: {
 		span: number
@@ -64,11 +63,8 @@ export default defineComponent({
 			}
 		})
 		const torefsData = toRefs(formState)
-		const onFinish = (value) => {
-			alert('000')
-			console.log(value)
+		const onFinish = () => {
 			//对表单做验证
-
 			router.push({
 				path: '/home',
 			})
@@ -77,7 +73,13 @@ export default defineComponent({
 			console.log('Failed:', errorInfo)
 		}
 		onMounted(() => {
-			Send({ email: '1583649818@qq.com' }).then(res => {
+			let obj = {
+				onlineProduct: "9597",
+				succ: true,
+				succNum: "309782",
+				userCount: "321808",
+			}
+			getInfo(obj).then(res => {
 				console.log(res, '00')
 			}).catch(err => {
 				console.log(err, '000')

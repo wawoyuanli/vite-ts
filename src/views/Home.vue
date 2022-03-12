@@ -13,7 +13,7 @@
 <script lang='ts'>
 import { defineComponent, reactive, ref, defineAsyncComponent } from 'vue'
 //@ts-ignore
-import BFC from '@/views/bfc.vue'
+// import BFC from '@/views/bfc.vue'
 interface Book {
 	title: string
 	author: string
@@ -21,7 +21,7 @@ interface Book {
 }
 export default defineComponent({
 	components: {
-		 BFC,
+		//  BFC,
 	},
 	setup() {
 		defineAsyncComponent

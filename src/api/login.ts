@@ -6,15 +6,24 @@ interface Email{
 }
 export function Send(data:Email){
     return service({
-        url: 'http://account.web-jshtml.cn/api'+ '/v1/send',
+        url: '/v1/send',
         method: 'POST',
         data,
     })
 }
-export function getInfo() {
+interface D {
+    onlineProduct:number,
+    succ: boolean,
+    succNum: number,
+    userCount: number,
+    visits: number
+}
+export function getInfo(data:D) {
     return service({
-      url: '/cshop-token/cshop-token/controller/userToken/manager/getUserInfo',
-      method: 'POST'
+      url: '/getCountData.shtml',
+      method: 'POST',
+      data
     });
   }
+
   

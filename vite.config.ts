@@ -8,12 +8,12 @@ import * as path from "path";
 //   return path.resolve(__dirname, dir);
 // }
 export default defineConfig({
-  base:"./",
+  // base:"./",
   define:{
     'process.env':{}
   },
   plugins: [vue()],
-  publicDir:'static',
+  // publicDir:'static',
   resolve: {
     //路径别名
     alias: {
@@ -43,7 +43,7 @@ export default defineConfig({
     open: "http://localhost:8989/#/login",
     proxy: {
       '/api': {
-        target: 'http://account.web-jshtml.cn/api',// http://vue3.com/api/ https://weixin1.zsins.com/api/
+        target: 'https://www.huanhaoba.com/api/',// http://vue3.com/api/ https://weixin1.zsins.com/api/
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       },
