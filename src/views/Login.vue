@@ -1,5 +1,6 @@
 <template>
 	<div class="h_login">
+		
 		<a-form
 			:model="formState"
 			:wrapper-col="{ span: formState.wrapperCol.span, offset: formState.wrapperCol.offset }"
@@ -98,7 +99,7 @@ export default defineComponent({
 .h_login {
 	background-color: rgb(173, 184, 202);
 	min-height: 100vh;
-	color: #fff;
+	color: $orange;
 	.ant-form {
 		padding-top: 10%;
 	}

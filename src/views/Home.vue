@@ -36,17 +36,18 @@ export default defineComponent({
 	},
 })
 </script>
-<style scoped>
+<style scoped lang="scss">
 .aside {
     float: left;
     width: 90%;
     background-color: rgb(189, 144, 181);
 }
 .main {
+	color: $color;
     overflow: auto;
 	background-color: red;
 }
-.ifc{
+.ifc{	
 	width: 100%;
 	display: inline-block;
 	text-align: center;

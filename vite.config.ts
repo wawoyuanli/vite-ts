@@ -12,6 +12,7 @@ export default defineConfig({
     'process.env':{}
   },
   plugins: [vue()],
+  publicDir:'static',
   resolve: {
     //路径别名
     alias: {
@@ -21,8 +22,10 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
+      //配置全局scss
       scss: {
-        additionalData: `$injectedColor: orange;`
+        // additionalData: `$injectedColor: orange;`,
+        additionalData:`@import "./src/assets/scss/global.scss";`,
       }
     }
   },
@@ -51,7 +54,7 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: 'dist',
+    outDir: process.env.NODE_ENV==='production' ? 'dist' : 'devDist',
     assetsDir:'assets',
     minify: "esbuild",
     polyfillModulePreload:true,
