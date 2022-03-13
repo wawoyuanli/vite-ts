@@ -1,19 +1,16 @@
 // https://vitejs.dev/config/
-import { defineConfig } from "vite";
 // npm i --save-dev @types/node
+import { defineConfig,loadEnv ,ConfigEnv} from "vite";
 import vue from "@vitejs/plugin-vue";
 import * as path from "path";
 
-// function pathResolve(dir: string) {
-//   return path.resolve(__dirname, dir);
-// }
 export default defineConfig({
-  // base:"./",
+  base:"./",
   define:{
     'process.env':{}
   },
   plugins: [vue()],
-  // publicDir:'static',
+  publicDir:'static',
   resolve: {
     //路径别名
     alias: {
@@ -25,7 +22,6 @@ export default defineConfig({
     preprocessorOptions: {
       //配置全局scss
       scss: {
-        // additionalData: `$injectedColor: orange;`,
         additionalData:`@import "./src/assets/scss/global.scss";`,
       }
     }

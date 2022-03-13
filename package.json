@@ -1,7 +1,10 @@
 {
   "name": "vite-ts",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "keywords": ["vite","ts","antd"],
+  "main": "index.html",
+  "repository": {"url": "git@github.com:wawoyuanli/vite-ts.git","type": ""},
   "scripts": {
     "dev": "vite",
     "build:dev": "vue-tsc --noEmit && vite build --mode development",
